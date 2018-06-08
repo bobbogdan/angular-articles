@@ -1,0 +1,6 @@
+.navbar-zindex {
+  z-index: 1100;
+}
+.modal-backdrop .in {
+  opacity: .2 !important;
+}

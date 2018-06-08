@@ -1,0 +1,32 @@
+<form [formGroup]="editForm" (ngSubmit)="save(editForm.value)">
+  <div class="modal fade in" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <label for="title">Title</label>
+          <input formControlName="tittttttle" class="form-control" type="text" id="title" />
+          <br/><br/>
+
+          <label for="image">Image</label>
+          <input formControlName="image" class="form-control" type="text" id="image" />
+          <br/><br/>
+
+          <label for="description">Description</label>
+          <input formControlName="description" class="form-control" type="text" id="description"  />
+          <br/><br/>
+
+          <label for="publish_date">Publish date</label>
+          <input class="form-control" type="date" id="publish_date" formControlName="publish_date" />
+          <br/><br/>
+
+          <div id="submit-id">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="modal-backdrop fade in backgr"></div>
