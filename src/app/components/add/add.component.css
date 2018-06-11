@@ -1,0 +1,14 @@
+.modal {
+  display: block;
+}
+.backgr {
+  opacity: 0.2;
+}
+.modal.in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#submit-id {
+  text-align: center;
+}

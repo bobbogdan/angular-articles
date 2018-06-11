@@ -121,3 +121,6 @@ tr>th {
 .add-btn {
   text-align: center;
 }
+button.btn.trash-btn:hover {
+  color: #d58512;
+}

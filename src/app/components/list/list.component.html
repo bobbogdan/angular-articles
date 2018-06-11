@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar add-btn">
-      <a class="btn btn-warning" routerLink="/main/edit">Add Article</a>
+      <a class="btn btn-warning" routerLink="/main/add">Add Article</a>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <h1 class="page-header">Dashboard</h1>
@@ -17,16 +17,18 @@
             <th>Publish date</th>
             <th>Description</th>
             <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let article of articles;  let i = index">
+          <tr *ngFor="let article of articles">
             <td>{{article.id}}</td>
             <td>{{article.title}}</td>
             <td><img id="table-image" src={{article.image}}></td>
             <td>{{article.publish_date}}</td>
             <td>{{article.description}}</td>
-            <td><a class="btn btn-warning" (click)="editArticle(i)">Edit</a></td>
+            <td><a class="btn btn-warning" (click)="editArticle(article.id)">Edit</a></td>
+            <td><button class="btn trash-btn" (click)="removeArticle(article.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
           </tr>
           </tbody>
         </table>

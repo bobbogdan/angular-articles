@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {map, pluck, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 
 
-
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class EditComponent implements OnInit {
+export class AddComponent implements OnInit {
 
-  public editForm: FormGroup;
+  public addForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,19 +20,21 @@ export class EditComponent implements OnInit {
     private router: Router,
     private service: HttpService
   ) {
-    const article = this.route.snapshot.data['article'];
-    const {title, image, description, publish_date} = article;
-    this.editForm = this.fb.group({ title, image, description, publish_date});
+    this.addForm = this.fb.group({
+      title: ' ',
+      image: ' ',
+      description : ' ',
+      publish_date : ' '});
   }
 
 
   save(value) {
     this.service
-      .updateArticle(value)
+      .postArticle(value)
       .subscribe( () => this.router.navigate(['/main/list']));
   }
 
   ngOnInit() {
-
   }
+
 }
