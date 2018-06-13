@@ -10,7 +10,7 @@
           <br/><br/>
 
           <label for="image">Image</label>
-          <input formControlName="image" class="form-control" type="text" id="image" />
+          <input class="form-control" (change)="setFile($event)" type="file" id="image" />
           <br/><br/>
 
           <label for="description">Description</label>

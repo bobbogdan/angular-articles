@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {map, pluck, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
+
 import { HttpService } from '../../services/http.service';
-
-
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent {
 
   public editForm: FormGroup;
 
@@ -23,18 +21,31 @@ export class EditComponent implements OnInit {
     private service: HttpService
   ) {
     const article = this.route.snapshot.data['article'];
-    const {title, image, description, publish_date} = article;
-    this.editForm = this.fb.group({ title, image, description, publish_date});
+    const {_id, title, image, description, publish_date} = article;
+    this.editForm = this.fb.group({ _id, title, image, description, publish_date});
   }
 
-
-  save(value) {
+  save() {
+    const data = this.prepareSave();
+    const _id = this.editForm.get('_id').value;
     this.service
-      .updateArticle(value)
-      .subscribe( () => this.router.navigate(['/main/list']));
+      .updateArticle(_id, data)
+      .subscribe(() => this.router.navigate(['/main/list']));
   }
 
-  ngOnInit() {
+  setFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.editForm.get('image').setValue(file);
+    }
+  }
 
+  private prepareSave(): any {
+    const fd = new FormData();
+    const formValue = this.editForm.value;
+    for (const key in formValue) {
+      fd.append(key, this.editForm.get(key).value);
+    }
+    return fd;
   }
 }

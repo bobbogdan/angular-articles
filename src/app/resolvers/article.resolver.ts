@@ -13,7 +13,6 @@ export class ArticleResolver implements Resolve<Observable<Article>> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Article> {
     const id = route.paramMap.get('id');
-    return this.service.getArticle()
-      .pipe(map(data => data.find(item => item.id === +id)));
+    return this.service.getArticle(id);
   }
 }

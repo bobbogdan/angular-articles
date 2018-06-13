@@ -22,13 +22,13 @@
           </thead>
           <tbody>
           <tr *ngFor="let article of articles">
-            <td>{{article.id}}</td>
+            <td>{{article._id}}</td>
             <td>{{article.title}}</td>
-            <td><img id="table-image" src={{article.image}}></td>
+            <td><img id="table-image" [src]="host + article.image"></td>
             <td>{{article.publish_date}}</td>
             <td>{{article.description}}</td>
-            <td><a class="btn btn-warning" (click)="editArticle(article.id)">Edit</a></td>
-            <td><button class="btn trash-btn" (click)="removeArticle(article.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+            <td><a class="btn btn-warning" (click)="editArticle(article._id)">Edit</a></td>
+            <td><button class="btn trash-btn" (click)="removeArticle(article._id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
           </tr>
           </tbody>
         </table>

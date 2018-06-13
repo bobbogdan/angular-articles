@@ -3,10 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Article } from './../shared/models/articles';
-
-const HttpOptions = {
-  headers : new HttpHeaders({ 'Content-Type' : 'application/json' })
-};
+import { config } from '../config/config';
 
 @Injectable()
 export class HttpService {
@@ -14,21 +11,22 @@ export class HttpService {
   constructor(private http: HttpClient) {
   }
 
-  public getArticle(): Observable<Article[]> {
-    return this.http.get<Article[]>('http://localhost:3000/articles/');
+  public getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(`${config.API}/articles/`);
   }
 
-  public updateArticle(article) {
-    console.log(article);
-    return this.http.put('http://localhost:3000/articles/' + article.id, article, HttpOptions);
+  public getArticle(id): Observable<Article> {
+    return this.http.get<Article>(`${config.API}/articles/${id}`);
+  }
+
+  public updateArticle(id, article) {
+    return this.http.put(`${config.API}/articles/${id}`, article);
   }
 
   public postArticle(article) {
-    console.log(article);
-    return this.http.post('http://localhost:3000/articles/', article, HttpOptions);
+    return this.http.post(`${config.API}/articles/`, article);
   }
-  public removeArticle(target) {
-    console.log(target);
-    return this.http.delete('http://localhost:3000/articles/' + target, HttpOptions);
+  public removeArticle(id) {
+    return this.http.delete(`${config.API}/articles/${id}`);
   }
 }
