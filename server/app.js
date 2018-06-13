@@ -21,6 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/app/build', 'index.html'));
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes')(app);
