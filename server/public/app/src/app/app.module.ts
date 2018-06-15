@@ -15,6 +15,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { AboutComponent } from './components/about/about.component';
 import {ArticleResolver} from './resolvers/article.resolver';
 import { AddComponent } from './components/add/add.component';
+import { ValidationComponent } from './shared/components/validation/validation.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AddComponent } from './components/add/add.component';
     EditComponent,
     AboutComponent,
     AddComponent,
+    ValidationComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,22 +7,29 @@
         <div class="modal-body">
           <label for="title">Title</label>
           <input formControlName="title" class="form-control" type="text" id="title" />
+          <app-validation [control]="editForm.get('title')"></app-validation>
           <br/><br/>
 
           <label for="image">Image</label>
-          <input class="form-control" (change)="setFile($event)" type="file" id="image" />
+          <div class="image-preview">
+            <img [src]="imgPreview" alt="">
+          </div>
+          <input placeholder="choose another one" class="form-control" (change)="setFile($event)" type="file" id="image" />
+          <app-validation [control]="editForm.get('image')"></app-validation>
           <br/><br/>
 
           <label for="description">Description</label>
           <input formControlName="description" class="form-control" type="text" id="description"  />
+          <app-validation [control]="editForm.get('description')"></app-validation>
           <br/><br/>
 
           <label for="publish_date">Publish date</label>
           <input class="form-control" type="date" id="publish_date" formControlName="publish_date" />
+          <app-validation [control]="editForm.get('publish_date')"></app-validation>
           <br/><br/>
 
           <div id="submit-id">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid">Submit</button>
           </div>
         </div>
       </div>

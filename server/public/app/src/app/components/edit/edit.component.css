@@ -9,6 +9,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.image-preview img {
+  height: 300px;
+  width: 300px;
+}
+
 #submit-id {
   text-align: center;
 }
